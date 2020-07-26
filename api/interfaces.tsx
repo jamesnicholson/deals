@@ -17,6 +17,10 @@ export default interface Deal {
     gloalId: string
     name: string
  }
+ export interface CountryState {
+   country: Country;
+   setCountry: React.Dispatch<React.SetStateAction<Country>>;
+ }
  export interface Countries {
     country: Country[];
   }

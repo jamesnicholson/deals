@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { useQuery} from '@apollo/client';
 import {
   SafeAreaView,
@@ -26,18 +26,20 @@ import {
 
 import {GET_COUNTRIES} from "../../api/queries"
 import {Countries} from "../../api/interfaces"
+import countryContext from '../../store/country'
 declare const global: {HermesInternal: null | {}};
 
 const Feed = () => {
 
+  const country = useContext(countryContext)
 
   const { loading, data } = useQuery<Countries>(
     GET_COUNTRIES
   );
-
-useEffect(() => {
- console.log(data)
-}, [data])
+  console.log(country);
+  useEffect(() => {
+  //console.log(data)
+  }, [data])
 
   return (
     <>
