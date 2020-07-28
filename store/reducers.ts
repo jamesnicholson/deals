@@ -1,10 +1,18 @@
 
 import {Country} from '../api/interfaces'
 import {ActionType} from '../store/types'
-type countryState = {
-    country: Country
+ type AppState = {
+    country: Country  
 }
-export const countryReducer = (state: countryState, action:any) => {
+export const appState = {
+    country: {
+      gloalId: "EBAY-AU",
+      id: "15",
+      name:" eBay Australia"
+    }
+  }
+  
+export const countryReducer = (state: AppState, action:any) => {
     switch(action.type){
         case ActionType.UPDATE_COUNTRY: 
         return [
@@ -14,17 +22,17 @@ export const countryReducer = (state: countryState, action:any) => {
                     id: action.country.id,
                     name: action.country.name
                 }
-          
            }
-
         ]
+        break;
         default:
             throw new Error();
+        break;
     }
 }
-const mainReducer = (state:countryState, action: any) => ({
+const reducers = (state:AppState, action: any) => ({
     country: countryReducer(state, action)
 
 });
 
-  export default mainReducer
+  export default reducers

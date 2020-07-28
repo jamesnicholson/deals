@@ -24,22 +24,10 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {GET_COUNTRIES} from "../../api/queries"
-import {Countries} from "../../api/interfaces"
-import countryContext from '../../store/country'
+
 declare const global: {HermesInternal: null | {}};
 
 const Feed = () => {
-
-  const country = useContext(countryContext)
-
-  const { loading, data } = useQuery<Countries>(
-    GET_COUNTRIES
-  );
-  console.log(country);
-  useEffect(() => {
-  //console.log(data)
-  }, [data])
 
   return (
     <>
