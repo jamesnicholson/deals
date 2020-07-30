@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React, {useEffect, useContext} from 'react';
 import { useQuery} from '@apollo/client';
 import {
@@ -17,6 +7,8 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
+  Alert,
 } from 'react-native';
 
 import {
@@ -26,20 +18,27 @@ import {
 
 import {GET_COUNTRIES} from "../../api/queries"
 import {Countries} from "../../api/interfaces"
-import countryContext from '../../store/country'
-declare const global: {HermesInternal: null | {}};
+import Store from '../../store'
 
 const Feed = () => {
-
-  const country = useContext(countryContext)
-
   const { loading, data } = useQuery<Countries>(
     GET_COUNTRIES
   );
-  console.log(country);
-  useEffect(() => {
-  //console.log(data)
-  }, [data])
+ const { state, dispatch } = useContext(Store)
+
+  function setCountry(){ 
+        console.log("SET_COUNTRY")
+         dispatch({
+          type:"SET_COUNTRY",
+          payload:{
+            country: {
+              gloalId: "EBAY-DE",
+              id: "77",
+              name: "eBay Germany"
+            }
+          }
+        })
+  }
 
   return (
     <>
@@ -49,17 +48,21 @@ const Feed = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Hello World</Text>
-            </View>
-          )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.tsx</Text> to change
                 this screen and then come back to see your edits.
+                <Button
+                   // onPress={()=> setCountry()}
+                   onPress={() => { 
+                        console.log('onpress');
+                    }}
+                    title="Learn More"
+                    color="#841584"
+                    accessibilityLabel="Learn more about this purple button"
+                  />
               </Text>
             </View>
           </View>
