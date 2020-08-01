@@ -1,13 +1,17 @@
 import React, {useContext} from 'react';
 import {ApolloProvider} from '@apollo/client'
-import Feed from "./components/feed";
+import {StoreProvider} from './store'
 import client from './api/client'
+import Feed from "./components/feed";
+
 const App = () => {
   return (
     <>
-      <ApolloProvider client={client}>
-        <Feed />
-      </ApolloProvider>
+      <StoreProvider>
+        <ApolloProvider client={client}>
+          <Feed />
+        </ApolloProvider>
+      </StoreProvider>
     </>
   );
 };

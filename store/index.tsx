@@ -15,9 +15,12 @@ const initialState = {
       name:" eBay Australia"
     }
 }
+export const Store = createContext<IState | any>(initialState)
+
 function reducer(state: IState, action: IAction): IState{
     switch(action.type){
-        case 'UPDATE_COUNTRY':
+        case 'SET_COUNTRY':
+            console.log(action.type)
             return action.payload
         default:
             return state
@@ -28,5 +31,3 @@ export function StoreProvider(props: any): JSX.Element{
     const [state, dispatch] = useReducer(reducer, initialState)
     return <Store.Provider value={{state, dispatch}}>{props.children}</Store.Provider>
 }
-const Store = createContext<IState | any>(initialState)
-export default Store

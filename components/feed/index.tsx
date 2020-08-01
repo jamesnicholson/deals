@@ -18,27 +18,34 @@ import {
 
 import {GET_COUNTRIES} from "../../api/queries"
 import {Countries} from "../../api/interfaces"
-import Store from '../../store'
+import {Store} from '../../store'
 
 const Feed = () => {
+
   const { loading, data } = useQuery<Countries>(
     GET_COUNTRIES
   );
- const { state, dispatch } = useContext(Store)
 
-  function setCountry(){ 
-        console.log("SET_COUNTRY")
-         dispatch({
-          type:"SET_COUNTRY",
-          payload:{
-            country: {
-              gloalId: "EBAY-DE",
-              id: "77",
-              name: "eBay Germany"
-            }
+  const { state, dispatch } = useContext(Store)
+  const name = state ? "Loading" :  state.payload.country.name;
+  const gloalId = state ? "Loading" :  state.payload.country.gloalId;
+  
+  function setCountry(){
+    dispatch({
+        type:"SET_COUNTRY",
+        payload:{
+          country: {
+            gloalId: "EBAY-DE",
+            id: "77",
+            name: "eBay Germany"
           }
-        })
+        }
+    })
   }
+  useEffect(() => {
+    console.log(state.country.name)
+  },[state])
+
 
   return (
     <>
@@ -50,20 +57,15 @@ const Feed = () => {
           <Header />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                this screen and then come back to see your edits.
+              <Text style={styles.sectionTitle}>{state.country.name}</Text>
+              <Text style={styles.sectionDescription}>{state.country.gloalId}</Text>
+              
                 <Button
-                   // onPress={()=> setCountry()}
-                   onPress={() => { 
-                        console.log('onpress');
-                    }}
-                    title="Learn More"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
+                  onPress={()=> setCountry()}
+                  title="Change Country"
+                  color="#841584"
                   />
-              </Text>
+           
             </View>
           </View>
         </ScrollView>
