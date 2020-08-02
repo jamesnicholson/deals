@@ -6,7 +6,7 @@ import {
   View,
   StatusBar,
 } from 'react-native';
-import { Container, Text } from "native-base";
+import { Container, Content,Text } from "native-base";
 
 import {Store} from '../../store'
 import Countries from '../countries'
@@ -18,13 +18,13 @@ const Feed = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <Container>
-            
-              <Text style={styles.sectionTitle}>Country</Text>
-              <Text style={styles.sectionTitle}>{state.country.name}</Text>
-              <Text style={styles.sectionDescription}>{state.country.gloalId}</Text>
-              <Countries />
-              <DealList />
-  
+        <Content padder>
+          <Text style={styles.sectionTitle}>Country</Text>
+          <Text style={styles.sectionTitle}>{state.country.name}</Text>
+          <Text style={styles.sectionDescription}>{state.country.gloalId}</Text>
+          <Countries />
+          <DealList />
+        </Content>
       </Container>
     </>
   );
