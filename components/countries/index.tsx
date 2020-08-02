@@ -51,12 +51,9 @@ const Countries = () => {
     updateCountryList()
   },[data])
 
-  return(
-    <Container>        
-      <Content padder>
-          <Text>Choose Region</Text>
-          <Icon name="earth" style={{ fontSize: 30, color: "#000" }} onPress={() => pressHandler()}/>
-      </Content>
-    </Container>)
+  return(<Content padder>
+              <Text>Choose Region</Text>
+              <Icon name="earth" style={{ fontSize: 30, color: "#000" }} onPress={() => pressHandler()}/>
+          </Content>)
 }
 export default Countries

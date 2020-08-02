@@ -1,4 +1,7 @@
-export default interface Deal {
+/** 
+ *  
+ * Deals   */
+export default interface IDeal {
     itemId: string
     title: string
     url: string
@@ -12,6 +15,12 @@ export default interface Deal {
     shippingCost: string
     dealUrl: string
  }
+ export interface IDeals {
+  deals: IDeal[];
+ }
+ export interface IDealsByCountryVars {
+  country: String;
+}
  export interface ICountry{
     id: string
     gloalId: string
@@ -25,6 +34,7 @@ export default interface Deal {
    country: ICountry;
    setCountry: React.Dispatch<React.SetStateAction<ICountry>>;
  }
+ 
  export interface ICountries {
    countries: ICountry[];
   }

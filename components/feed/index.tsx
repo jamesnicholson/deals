@@ -4,50 +4,42 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text,
   StatusBar,
 } from 'react-native';
+import { Container, Text } from "native-base";
 
-import {
-  Header,
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
 import {Store} from '../../store'
 import Countries from '../countries'
+import DealList from '../deallist'
 const Feed = () => {
+
   const { state, dispatch } = useContext(Store)
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
+      <Container>
+            
               <Text style={styles.sectionTitle}>Country</Text>
               <Text style={styles.sectionTitle}>{state.country.name}</Text>
               <Text style={styles.sectionDescription}>{state.country.gloalId}</Text>
               <Countries />
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+              <DealList />
+  
+      </Container>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: Colors.lighter,
+    backgroundColor: "#fff",
   },
   engine: {
     position: 'absolute',
     right: 0,
   },
   body: {
-    backgroundColor: Colors.white,
+    backgroundColor: "#fff",
   },
   sectionContainer: {
     marginTop: 32,
@@ -56,19 +48,19 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
-    color: Colors.black,
+    color: "#000",
   },
   sectionDescription: {
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
-    color: Colors.dark,
+    color: "#000",
   },
   highlight: {
     fontWeight: '700',
   },
   footer: {
-    color: Colors.dark,
+    color: "#000",
     fontSize: 12,
     fontWeight: '600',
     padding: 4,
