@@ -19,8 +19,7 @@ export const Store = createContext<IState | any>(initialState)
 
 function reducer(state: IState, action: IAction): IState{
     switch(action.type){
-        case 'SET_COUNTRY':
-            console.log(action.type)
+        case 'UPDATE_COUNTRY':
             return action.payload
         default:
             return state

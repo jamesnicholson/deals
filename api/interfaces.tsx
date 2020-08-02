@@ -12,15 +12,19 @@ export default interface Deal {
     shippingCost: string
     dealUrl: string
  }
- export interface Country{
+ export interface ICountry{
     id: string
     gloalId: string
     name: string
  }
+ export interface ICountryActionSheet{
+   id: string
+   text: string
+}
  export interface CountryState {
-   country: Country;
-   setCountry: React.Dispatch<React.SetStateAction<Country>>;
+   country: ICountry;
+   setCountry: React.Dispatch<React.SetStateAction<ICountry>>;
  }
- export interface Countries {
-    country: Country[];
+ export interface ICountries {
+   countries: ICountry[];
   }

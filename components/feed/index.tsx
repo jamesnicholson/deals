@@ -1,5 +1,4 @@
-import React, {useEffect, useContext} from 'react';
-import { useQuery} from '@apollo/client';
+import React, {useContext} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,46 +6,16 @@ import {
   View,
   Text,
   StatusBar,
-  Button,
-  Alert,
 } from 'react-native';
 
 import {
   Header,
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-
-import {GET_COUNTRIES} from "../../api/queries"
-import {Countries} from "../../api/interfaces"
 import {Store} from '../../store'
-
+import Countries from '../countries'
 const Feed = () => {
-
-  const { loading, data } = useQuery<Countries>(
-    GET_COUNTRIES
-  );
-
   const { state, dispatch } = useContext(Store)
-  const name = state ? "Loading" :  state.payload.country.name;
-  const gloalId = state ? "Loading" :  state.payload.country.gloalId;
-  
-  function setCountry(){
-    dispatch({
-        type:"SET_COUNTRY",
-        payload:{
-          country: {
-            gloalId: "EBAY-DE",
-            id: "77",
-            name: "eBay Germany"
-          }
-        }
-    })
-  }
-  useEffect(() => {
-    console.log(state.country.name)
-  },[state])
-
-
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -57,15 +26,10 @@ const Feed = () => {
           <Header />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Country</Text>
               <Text style={styles.sectionTitle}>{state.country.name}</Text>
               <Text style={styles.sectionDescription}>{state.country.gloalId}</Text>
-              
-                <Button
-                  onPress={()=> setCountry()}
-                  title="Change Country"
-                  color="#841584"
-                  />
-           
+              <Countries />
             </View>
           </View>
         </ScrollView>
