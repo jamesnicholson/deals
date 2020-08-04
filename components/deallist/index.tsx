@@ -8,32 +8,18 @@ import {Store} from '../../store'
 
 const DealList = () => {
     const { state, dispatch } = useContext(Store)
-
     const { loading, data } = useQuery<IDeals, IDealsByCountryVars>(
         GET_DEALS_BY_COUNTRY,
         { variables: { country: state.country.gloalId } }
-      );
-
-      useEffect(()=> {
-            console.log(state.country.name)
-            console.log(data)
-      }, [data])
-
-
-      const List = () => { 
-   
-      }
-
-return  <Content>
-       {
-            typeof data?.deals !== undefined ?
-                data && data.deals.map((deal, index) => {
-                    console.log
-                    return <DealCard deal={deal} />
-                })
-            : null
-       }
-        </Content>
-
+        );
+    return  <Content>
+            {
+                typeof data?.deals !== undefined ?
+                    data && data.deals.map((deal, index) => {
+                        return <DealCard key={index} deal={deal} />
+                    })
+                : null
+            }
+            </Content>
 }
 export default DealList

@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import {  Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
-import IDeal, {IDeals, IDealsByCountryVars } from "../../api/interfaces"
+import IDeal from "../../api/interfaces"
 
 interface IProps{
     deal:IDeal
@@ -20,8 +20,15 @@ const DealCard : React.FC<IProps> = props => {
                 </Left>
             </CardItem>
             <CardItem cardBody>
-                <Image source={{uri: props.deal.image225}} style={{height: 200, width: null, flex: 1}}/>
+                <Image source={{uri: props.deal.image225}} style={styles.img}/>
             </CardItem>
         </Card>
 }
+const styles = StyleSheet.create({
+    img: {
+        height: 200, 
+        width: '100%', 
+        flex: 1
+    }
+  });
 export default DealCard
