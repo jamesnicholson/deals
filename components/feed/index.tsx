@@ -11,20 +11,18 @@ import { Container, Content,Text } from "native-base";
 import {Store} from '../../store'
 import Countries from '../countries'
 import DealList from '../deallist'
+import AppHeader from '../header';
 const Feed = () => {
 
   const { state, dispatch } = useContext(Store)
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <Container>
-        <Content padder>
-          <Text style={styles.sectionTitle}>Country</Text>
-          <Text style={styles.sectionTitle}>{state.country.name}</Text>
-          <Text style={styles.sectionDescription}>{state.country.gloalId}</Text>
-          <Countries />
-          <DealList />
-        </Content>
+        <Container>
+          <AppHeader countryName={state.country.name}  />
+          <Content > 
+            <DealList />
+          </Content>
       </Container>
     </>
   );
