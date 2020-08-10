@@ -1,8 +1,8 @@
 import React, { createContext, useReducer } from 'react'
-import {Country} from '../api/interfaces'
+import {ICountry} from '../api/interfaces'
 
 interface IState {
-    country: Country
+    country: ICountry
 }
 interface IAction {
     type: string
