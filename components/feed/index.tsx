@@ -13,16 +13,13 @@ import Countries from '../countries'
 import DealList from '../deallist'
 import AppHeader from '../header';
 const Feed = () => {
-
   const { state, dispatch } = useContext(Store)
   return (
     <>
       <StatusBar barStyle="dark-content" />
         <Container>
           <AppHeader countryName={state.country.name}  />
-          <Content > 
-            <DealList />
-          </Content>
+          <DealList />
       </Container>
     </>
   );
