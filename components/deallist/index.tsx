@@ -25,23 +25,19 @@ const DealList: React.FC<IProps> = () => {
               <FlatList<IDeal>
                 data={ data?.deals}
                 renderItem={({ item }) => <DealCard deal={item} />}
-                keyExtractor={item => item.itemId}
+                keyExtractor={item => {
+                    const keyGenerator = () => '_' + Math.random().toString(36).substr(2, 9)
+                    return item.itemId+keyGenerator()
+                  }
+                }
                 onEndReached={()=>{
-                  console.log( data?.deals.length)
                   fetchMore({
                     query: GET_DEALS,
                     variables: {
                       country: state.country.gloalId,
                       offset: data?.deals.length,
                       limit: 10
-                    },
-                    updateQuery: (prev: IDeals, { fetchMoreResult }) => {
-                      if (!fetchMoreResult) return prev;
-                      console.log(fetchMoreResult)
-                      return Object.assign({}, prev, {
-                        deals: [...prev?.deals, ...fetchMoreResult.deals]
-                      })
-                    } 
+                    }
                   })
                 }}
               />
