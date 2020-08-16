@@ -17,17 +17,8 @@ export const GET_CATEGORIES = gql`
     }
 `
 export const GET_DEALS_BY_CATEGORY = gql`
-  query getDealsByCategory($country: String!, $category: String! ) {
-        dealsByCategory(category:"260010" country:$country, limit:3) {
-            itemId,
-            title,
-            price
-        }
-  }
-`
-export const GET_DEALS_BY_COUNTRY = gql`
-  query getDealsByCountry($country: String!) {
-    deals(country: $country, limit:5) {
+ query deals($country: String!, $category: String, $limit: Int, $offset: Int) {
+    deals(country: $country, category:$category, limit:$limit, offset: $offset) {
         itemId,
         title,
         url,
@@ -43,4 +34,25 @@ export const GET_DEALS_BY_COUNTRY = gql`
     }
   }
 `
-export default GET_DEALS_BY_COUNTRY
+export const GET_DEALS = gql`
+ query deals($country: String!, $limit: Int, $offset: Int) {
+    deals(country: $country, limit:$limit, offset: $offset) {
+        itemId,
+        title,
+        url,
+        endsAt,
+        image225,
+        currency,
+        price,
+        originalPrice,
+        discountPercentage,
+        quantity,
+        shippingCost,
+        dealUrl
+    }
+  }
+`
+
+
+
+export default GET_DEALS

@@ -9,14 +9,14 @@ interface IProps{
 }
 
 const DealCard : React.FC<IProps> = props => {
-    console.log(props.deal.title)
+
     return <Card>
                 <CardItem>
                     <Left>
                         <Thumbnail source={{uri: props.deal.image225}} />
                         <Body>
                             <Text>{props.deal.title}</Text>
-                            <Text note>GeekyAnts</Text>
+                            <Text note> {props.deal.currency + props.deal.price}</Text>
                         </Body>
                     </Left>
         

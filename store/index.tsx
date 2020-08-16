@@ -8,12 +8,26 @@ interface IAction {
     type: string
     payload: any
 }
-const initialState = {
+export const initialState = {
     country: {
       gloalId: "EBAY-AU",
       id: "15",
       name:" eBay Australia"
-    }
+    },
+    deals:[{
+        itemId: "",
+        title: "",
+        url: "",
+        endsAt:  "",
+        image225:  "",
+        currency:  "",
+        price:  "",
+        originalPrice:  "",
+        discountPercentage:  "",
+        quantity:  "",
+        shippingCost:  "",
+        dealUrl: "",
+    }]
 }
 export const Store = createContext<IState | any>(initialState)
 

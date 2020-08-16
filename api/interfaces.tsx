@@ -1,6 +1,3 @@
-/** 
- *  
- * Deals   */
 export default interface IDeal {
     itemId: string
     title: string
@@ -18,8 +15,10 @@ export default interface IDeal {
  export interface IDeals {
   deals: IDeal[];
  }
- export interface IDealsByCountryVars {
-  country: String;
+ export interface IDealsVars {
+  country: string;
+  limit: Number;
+  offset: Number;
 }
  export interface ICountry{
     id: string
